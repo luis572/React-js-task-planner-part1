@@ -18,6 +18,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 import AccountBoxIcon from '@material-ui/icons/AccountBox';
+import {ListaDeActividades} from './ListaDeActividades';
 const drawerWidth = 240;
 
 const useStyles = makeStyles(theme => ({
@@ -76,7 +77,7 @@ const useStyles = makeStyles(theme => ({
     marginLeft: 0,
   },
   accountBoxIcon:{
-    fontSize:'100px',
+    fontSize:'80px',
   },
 }));
 
@@ -131,7 +132,11 @@ export default function PersistentDrawerLeft() {
             {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
           </IconButton>
         </div>
-        <AccountBoxIcon className={classes.accountBoxIcon} />
+        <div className={classes.drawerHeader}>
+          <AccountBoxIcon className={classes.accountBoxIcon} />
+          {localStorage.getItem("email")}
+        </div>
+       
         
       </Drawer>
       <main
@@ -140,7 +145,6 @@ export default function PersistentDrawerLeft() {
         })}
       >
         <div className={classes.drawerHeader} />
-        
       </main>
     </div>
   );
